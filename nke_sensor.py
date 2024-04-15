@@ -50,6 +50,14 @@ SENSORNAME = ["Pressure",
               "Temperature",
               "Practical_Salinity"]
 
+#######################################################################################
+# Global variable to change according your settings
+CURRENT_DIR = os.getcwd()
+LOCAL_DATA_DIR = os.path.join(CURRENT_DIR, "data")
+LOCAL_GPX_DIR = os.path.join(CURRENT_DIR, "gpx")
+LOCAL_ALARM_DIR = os.path.join(CURRENT_DIR, "alarm")
+OUTPUT_FILE_NAME = os.path.join(CURRENT_DIR, "Total_Measurements.txt")
+
 ########################################################################################
 #
 ########################################################################################
