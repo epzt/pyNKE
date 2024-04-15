@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/nke_sensor" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
