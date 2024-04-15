@@ -379,17 +379,17 @@ class pyNKE:
                 action)
             self.iface.removeToolBarIcon(action)
 
-    def get_files_by_date(directory):
+    def get_files_by_date(self, directory):
         os.chdir(directory)
         files = [(os.stat(fname)[ST_CTIME], fname) for fname in os.listdir(directory) if os.path.isfile(fname)]
         files.sort()
         return [f for s,f in files]
 
-    def str2datetime(a):
+    def str2datetime(self, a):
       a = dt.datetime.strptime(a, '%Y-%m-%d %H:%M:%S')
       return(a)
 
-    def GetFiles():
+    def GetFiles(self):
         # Create SFTP object
         sftp = Sftp()
         # Connect to SFTP
@@ -426,7 +426,7 @@ class pyNKE:
         return downloaded_data_files, present_data_files
 
     # Create and fill the result file
-    def ConcatData():
+    def ConcatData(self):
         try:
             resDataFile = open(OUTPUT_FILE_NAME,'w')  # Default file name (see at the top)
         except:
