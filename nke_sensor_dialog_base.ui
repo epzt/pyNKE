@@ -6,29 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>389</width>
+    <height>277</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>NKE sensor</string>
   </property>
-  <widget class="QDialogButtonBox" name="button_box">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>260</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -50,6 +34,12 @@
      <width>291</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>DejaVu Sans</family>
+     <pointsize>8</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QPushButton" name="workingDirectoryPushButton">
@@ -75,7 +65,7 @@
     </rect>
    </property>
    <property name="title">
-    <string>Output files</string>
+    <string>Outputs</string>
    </property>
    <widget class="QLineEdit" name="prefixOutputFilesLineEdit">
     <property name="geometry">
@@ -132,7 +122,7 @@
      <string>Positions</string>
     </property>
     <property name="checked">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QCheckBox" name="alarmsCheckBox">
@@ -148,6 +138,69 @@
      <string>Alarms</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="plotGraphsCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>110</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Plot graphs</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="addPointsCheckBox">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>167</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add points to QGIS</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>361</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QPushButton" name="proceedPushButton">
+    <property name="text">
+     <string>Proceed</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="downloadProgressBar">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QDialogButtonBox" name="button_box">
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="standardButtons">
+     <set>QDialogButtonBox::Ok</set>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
@@ -159,8 +212,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>280</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -175,12 +228,28 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>280</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
      <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>positionsCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>addPointsCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>240</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>124</x>
+     <y>193</y>
     </hint>
    </hints>
   </connection>
