@@ -78,8 +78,10 @@ class pyNKEDialog(QtWidgets.QDialog, FORM_CLASS):
 
         # ADD connexion here
         self.workingDirectoryPushButton.clicked.connect(self.SelectWorkingDirectory)
-        self.proceedPushButton.clicked.connect(self.ExecuteTheWork)
+        self.proceedPushButton.clicked.connect(self.Downloads)
         self.workingDirectoryLineEdit.textChanged[str].connect(self.onChanged)
+        self.showPushButton.clicked.connect(self.ShowData)
+
     def onChanged(self, _newText):
         self.CURRENT_DIR = _newText
         self.UpdateGlobals(self.CURRENT_DIR)
@@ -184,13 +186,16 @@ class pyNKEDialog(QtWidgets.QDialog, FORM_CLASS):
         resDataFile.close()
         return True
 
-    def ExecuteTheWork(self):
+    def Downloads(self):
         downloaded, present = self.GetFiles()
         QMessageBox.information(self, "Downloads results",
                                 f"{downloaded} new data files downloaded\n{present} files ignored (or still present)")
         self.ConcatData()
-        pltNKE = PlotNKE(self.OUTPUT_FILE_NAME, '\t')
-        pltNKE.plotGraphics()
+
+    def ShowData(self):
+        if self.plotGraphsCheckBox.isChecked():
+            pltNKE = PlotNKE(self.OUTPUT_FILE_NAME, '\t', self)
+            pltNKE.plotGraphics()
 
 ########################################################################################
 #
@@ -299,13 +304,16 @@ class PlotNKE():
         self.xdata = []
         self.dFileName = _dFileName
         self.dSepChar = _dSepChar
-        self.nGraphs = 10  # Nombre de graphics
+        self.nGraphs = len(SENSORNAME)  # Nombre de graphics
         self.tideChbg = None
+        self.parent = parent
         return
 
     def plotGraphics(self):
         # Load the data set
-        self.getData()
+        if not self.getData():
+            return
+
         fig, axes = plt.subplots(nrows=self.nGraphs,ncols=1,sharex=True)
         colors = ["black","red", "green","brown","blue","yellow","black","red","green","brown","blue"]
 
@@ -332,8 +340,8 @@ class PlotNKE():
         try:
           with open(self.dFileName): pass
         except IOError:
-          print(f"File {self.dFileName} cannot be read")
-          return
+          QMessageBox.critical(self.parent, "Error", f"File {self.dFileName} cannot be read")
+          return False
 
         with open(self.dFileName,'r', errors='ignore') as dataFile:
             lcontent = dataFile.readlines()  # Open and read the entire file
@@ -360,5 +368,5 @@ class PlotNKE():
 
         self.xdata = pd.to_datetime(self.xdata)
         self.ydata.resize(len(self.xdata), self.nGraphs)
-        return
+        return True
 

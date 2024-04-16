@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>389</width>
-    <height>277</height>
+    <width>387</width>
+    <height>408</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -61,17 +61,17 @@
      <x>10</x>
      <y>70</y>
      <width>361</width>
-     <height>151</height>
+     <height>161</height>
     </rect>
    </property>
    <property name="title">
-    <string>Outputs</string>
+    <string>Downloads</string>
    </property>
    <widget class="QLineEdit" name="prefixOutputFilesLineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>60</y>
       <width>171</width>
       <height>26</height>
      </rect>
@@ -84,7 +84,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>30</y>
+      <y>40</y>
       <width>43</width>
       <height>18</height>
      </rect>
@@ -97,7 +97,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>50</y>
+      <y>30</y>
       <width>136</width>
       <height>24</height>
      </rect>
@@ -113,7 +113,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>80</y>
+      <y>60</y>
       <width>92</width>
       <height>24</height>
      </rect>
@@ -129,8 +129,8 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>110</y>
-      <width>99</width>
+      <y>90</y>
+      <width>77</width>
       <height>24</height>
      </rect>
     </property>
@@ -138,11 +138,53 @@
      <string>Alarms</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="proceedPushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>80</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Proceed</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="downloadProgressBar">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>120</y>
+      <width>241</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>250</y>
+     <width>361</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Outputs</string>
+   </property>
    <widget class="QCheckBox" name="plotGraphsCheckBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>90</y>
+      <x>10</x>
+      <y>30</y>
       <width>110</width>
       <height>24</height>
      </rect>
@@ -157,8 +199,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>120</y>
+      <x>170</x>
+      <y>30</y>
       <width>167</width>
       <height>24</height>
      </rect>
@@ -167,40 +209,35 @@
      <string>Add points to QGIS</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="showPushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>94</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QSplitter" name="splitter">
+  <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>230</y>
-     <width>361</width>
+     <x>290</x>
+     <y>370</y>
+     <width>80</width>
      <height>26</height>
     </rect>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>
-   <widget class="QPushButton" name="proceedPushButton">
-    <property name="text">
-     <string>Proceed</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="downloadProgressBar">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
-   <widget class="QDialogButtonBox" name="button_box">
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-    <property name="standardButtons">
-     <set>QDialogButtonBox::Ok</set>
-    </property>
-   </widget>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Close</set>
+   </property>
   </widget>
  </widget>
  <resources/>
