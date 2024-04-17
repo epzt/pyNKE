@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>387</width>
-    <height>408</height>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,179 +55,11 @@
     <string>...</string>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>361</width>
-     <height>161</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Downloads</string>
-   </property>
-   <widget class="QLineEdit" name="prefixOutputFilesLineEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>171</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Total_</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>40</y>
-      <width>43</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Prefix</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="measurementsCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>30</y>
-      <width>136</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Measurements</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="positionsCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>60</y>
-      <width>92</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Positions</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="alarmsCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>90</y>
-      <width>77</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Alarms</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="proceedPushButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>80</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Proceed</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="downloadProgressBar">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>120</y>
-      <width>241</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>250</y>
-     <width>361</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Outputs</string>
-   </property>
-   <widget class="QCheckBox" name="plotGraphsCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>110</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Plot graphs</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="addPointsCheckBox">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>30</y>
-      <width>167</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add points to QGIS</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="showPushButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>94</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Show</string>
-    </property>
-   </widget>
-  </widget>
   <widget class="QDialogButtonBox" name="button_box">
    <property name="geometry">
     <rect>
      <x>290</x>
-     <y>370</y>
+     <y>400</y>
      <width>80</width>
      <height>26</height>
     </rect>
@@ -238,6 +70,171 @@
    <property name="standardButtons">
     <set>QDialogButtonBox::Close</set>
    </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>361</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="downloads">
+    <attribute name="title">
+     <string>Downloads</string>
+    </attribute>
+    <widget class="QProgressBar" name="downloadProgressBar">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>180</y>
+       <width>341</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="measurementsCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>30</y>
+       <width>136</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Measurements</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>43</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Prefix</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="positionsCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>60</y>
+       <width>92</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Positions</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="alarmsCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>90</y>
+       <width>77</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Alarms</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="prefixOutputFilesLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>171</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Total_</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="proceedPushButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>80</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Proceed</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="outputs">
+    <attribute name="title">
+     <string>Outputs</string>
+    </attribute>
+    <widget class="QCheckBox" name="plotGraphsCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>110</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Plot graphs</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="addPointsCheckBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>30</y>
+       <width>167</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add points to QGIS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="showPushButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>240</y>
+       <width>94</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Show</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>
