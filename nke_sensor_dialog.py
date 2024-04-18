@@ -34,7 +34,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import pandas as pd
 from stat import ST_CTIME
-
+from xml.dom.minidom import parse
 
 SENSORNAME = ["Pressure",
               "Temperature",
@@ -57,6 +57,7 @@ daysFmt = mdates.DateFormatter('%d-%m-%y')
 
 #######################################################################################
 # This loads your .ui file so that PyQt can populate your plugin with the elements from Qt Designer
+########################################################################################
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'nke_sensor_dialog_base.ui'))
 
@@ -293,6 +294,56 @@ class Measure():
 
     def GetDataList(self):
         return self._ldata
+
+
+########################################################################################
+#
+########################################################################################
+class Position():
+    def __init__(self, parent=None):
+        # Variables
+        self._lat = 0.0
+        self._long = 0.0
+        self._datetime = ""
+
+    def SetDateTime(self, strstr):
+        if len(strstr) >= 12:
+            self._datetime = dt.datetime(2000 + int(strstr[4:6]), int(strstr[2:4]), int(strstr[0:2]), int(strstr[6:8]),
+                                         int(strstr[8:10]), int(strstr[10:12]))
+            return True
+        return False
+
+    def SetLatitude(self, strstr):
+        if len(strstr) > 0:
+            self._lat = float(int(strstr[0:2]) + (float(strstr[2:9]) / 60.0))
+            if strstr[9:10] == "S":
+                self._lat = self._lat * (-1)
+            return True
+        return False
+
+    def SetLongitude(self, strstr):
+        if len(strstr) > 0:
+            self._long = float(int(strstr[0:3]) + (float(strstr[3:10]) / 60.0))
+            if strstr[10:11] == "W":
+                self._long = self._long * (-1)
+            return True
+        return False
+
+    def GetLatitude(self):
+        return self._lat
+
+    def GetLongitude(self):
+        return self._long
+
+    def GetDateTime(self):
+        return self._datetime
+
+    def GetDate(self):
+        return self._datetime.date()
+
+    def GetTime(self):
+        return self._datetime.time()
+
 
 #####################################################################################
 # Class de gestion d'affichage des graphes SAMBAT
